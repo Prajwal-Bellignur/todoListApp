@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   testing: {
     padding: 10,
     fontSize: 15,
-    color: 'orange'
+    color: 'darkgreen',
+    backgroundColor: 'lightyellow',
   }
 });
