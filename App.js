@@ -35,7 +35,7 @@ export default function App() {
         <View style={styles.items}>
           {/* this is where the tasks will go */}
 
-          <ScrollView>
+          <ScrollView height="86%">
             {
               taskItems.map((item, index) => {
                 return (
