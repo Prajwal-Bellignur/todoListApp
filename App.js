@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react'
-import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, Alert } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, ScrollView, Text, View, TextInput, TouchableOpacity, Keyboard, Alert } from 'react-native';
 import Task from './components/Task.js';
 
 export default function App() {
@@ -35,16 +35,17 @@ export default function App() {
         <View style={styles.items}>
           {/* this is where the tasks will go */}
 
-          {
-            taskItems.map((item, index) => {
-              return (
-                <TouchableOpacity key={index} onPress={() => completeTask(index)}>
-                  <Task text={item}/>
-                </TouchableOpacity>
-              )
-            })
-          }
-
+          <ScrollView>
+            {
+              taskItems.map((item, index) => {
+                return (
+                  <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+                    <Task text={item}/>
+                  </TouchableOpacity>
+                )
+              })
+            }
+          </ScrollView>
         </View>
 
     </View>
@@ -57,8 +58,8 @@ export default function App() {
           autoFocus={true}
           style={styles.input}
           placeholder={'Write a task!'}
-          value={task} 
-          onChangeText={text => setTask(text)} 
+          value={task}
+          onChangeText={text => setTask(text)}
           onSubmitEditing = {() => handleAddTask()} />
         <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.AddWrapper}>
