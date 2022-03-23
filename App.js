@@ -25,14 +25,6 @@ export default function App() {
     setTaskItems(itemsCopy);
   }
 
-  // to add a task if the enter key is pressed -> not working
-  const handleKeyDown = () => {
-    console.log("here");
-    if(e.key == "Enter") {
-      handleAddTask();
-    }
-  }
-
   return (
     <View style={styles.container}>
 
@@ -61,7 +53,11 @@ export default function App() {
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.writeTaskWrapper}>
-        <TextInput style={styles.input} placeholder={'Write a task!'} value={task} onChangeText={text => setTask(text)} onKeyDown={(e) => handleKeyDown(e)}/>
+        <TextInput style={styles.input}
+          placeholder={'Write a task!'}
+          value={task} 
+          onChangeText={text => setTask(text)} 
+          onSubmitEditing = {() => handleAddTask()} />
         <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.AddWrapper}>
             <Text style={styles.addText}>+</Text>
