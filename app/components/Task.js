@@ -23,6 +23,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexDirection: 'row',
         alignItems: 'center',
+        borderWidth: 2,
+        borderColor: '#95b3f0',
         justifyContent: 'space-between',
         marginBottom: 20,
     },
@@ -34,18 +36,20 @@ const styles = StyleSheet.create({
     square: {
         width: 24,
         height: 24,
-        backgroundColor: '#55BCF6',
-        opacity: 0.4,
+        backgroundColor: '#95b3f0',
+        opacity: 0.6,
         borderRadius: 5,
         marginRight: 15,
     },
     itemText: {
-        maxWidth: '80%'
+        maxWidth: '80%',
+        color: '#000',
+        fontSize: 14,
     },
     circular: {
         width: 12,
         height: 12,
-        borderColor: '#55BCF6',
+        borderColor: '#95b3f0',
         borderWidth: 2,
         borderRadius: 5,
     },
