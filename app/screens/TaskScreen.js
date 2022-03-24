@@ -30,6 +30,8 @@ export default function TaskScreen() {
 
     {/** tasks for today */}
     <View style={styles.taskWrapper}>
+      <Text style={styles.sectionTitle}> Today's Tasks </Text>
+
         <View style={styles.items}>
           {/* this is where the tasks will go */}
 
