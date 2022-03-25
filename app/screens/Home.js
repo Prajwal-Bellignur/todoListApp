@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { KeyboardAvoidingView, Button, StyleSheet, ScrollView, Text, View, TextInput, TouchableOpacity, Keyboard, Alert } from 'react-native';
+import AlertInput from 'react-native-alert-input';
 
 const Home = ( {navigation} ) => {
-  const [name, setName] = useState();
+  const [cardName, setCardName] = useState();
+
+  const [cards, setCards] = useState([]);
 
   const inputName = () => {
-    if(name != null) {
+    if(cardName != null) {
       Keyboard.dismiss();
     } else{
       Alert.alert("Invalid Entry", "Please enter a task", "OK");
@@ -32,25 +35,35 @@ const Home = ( {navigation} ) => {
         <TextInput
           style={styles.input}
           placeholder="Enter your name"
-          value={name}
-          onChangeText={text => setName(text)}
+          value={cardName}
+          onChangeText={text => setCardName(text)}
           onSubmitEditing = {() => inputName()}
           />
         <Button
           title="next screen"
-          onPress={ () => navigation.push('TaskScreen', {Name: name})}
+          onPress={ () => navigation.push('TaskScreen', {Name: cardName})}
         /> */}
       </View>
 
       {/** adding a new card */}
-      <View style={styles.addCard} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      <KeyboardAvoidingView style={styles.addCard} behavior={Platform.OS === "ios" ? "padding" : "height"}>
         <Text style={styles.addButtonText}>Click to add a new category!</Text>
-        <TouchableOpacity onPress={() => console.log("Added a new category")}>
+        <TouchableOpacity onPress={() => {
+            <TextInput
+              autoFocus={true}
+              style={styles.addInput}
+              placeholder="Enter category name"
+              value={cardName}
+              onChangeText={text => setCardName(text)}
+              onSubmitEditing = {() => handleAddCard()}
+            />
+        }
+        }>
           <View style={styles.addButton}>
             <Text style={styles.add}>+</Text>
           </View>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     </View>
   );
 
@@ -97,5 +110,14 @@ const styles = StyleSheet.create({
   },
   add: {
     color: '#FFF'
+  },
+  addInput: {
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    backgroundColor: '#FFF',
+    borderRadius: 60,
+    borderColor: '#95b3f0',
+    borderWidth: 1,
+    width: 250,
   },
 })
