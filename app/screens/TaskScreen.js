@@ -3,11 +3,10 @@ import React, {useState} from 'react'
 import { KeyboardAvoidingView, Button, StyleSheet, ScrollView, Text, View, TextInput, TouchableOpacity, Keyboard, Alert } from 'react-native';
 import Task from '../components/Task.js';
 
-export default function TaskScreen() {
+export default function TaskScreen({ route, navigation }) {
 
   const [task, setTask] = useState();
   const [taskItems, setTaskItems] = useState([]);
-
 
   const handleAddTask = () => {
     if(task != null) {
@@ -25,13 +24,15 @@ export default function TaskScreen() {
     setTaskItems(itemsCopy);
   }
 
+  // const Name = route.params.Name;
+
   return (
     <View style={styles.container}>
 
     {/** tasks for today */}
     <View style={styles.taskWrapper}>
-      <Text style={styles.sectionTitle}> Today's Tasks </Text>
-
+      {//<Text style={styles.sectionTitle}> Today's Tasks </Text>
+      }
         <View style={styles.items}>
           {/* this is where the tasks will go */}
 
